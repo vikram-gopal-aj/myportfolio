@@ -1,5 +1,11 @@
+import Login from "../components/login";
+
 function Components() {
-    return <h1>Components</h1>;
+  return (
+    <div className="main-content">
+      <Login />
+    </div>
+  );
 }
 
 export default Components;

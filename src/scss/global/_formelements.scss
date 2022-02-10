@@ -1,0 +1,44 @@
+input {
+  outline: none;
+  border: 0.1rem solid $black;
+  border-radius: 0.3rem;
+  font-size: 1.6rem;
+  padding: 1rem 0.5rem;
+  margin-bottom: 2rem;
+  width: 26rem;
+}
+
+.input-wrapper {
+  position: relative;
+
+  &-password {
+    i {
+      font-weight: bold;
+      font-size: 1.5rem;
+      position: absolute;
+      right: 1rem;
+      top: 1.2rem;
+    }
+    &.show i::before {
+      content: "\f06e";
+    }
+  }
+}
+
+button,
+.btn {
+  background-color: $purple;
+  background-image: $gradient;
+  border: none;
+  padding: 1rem 5rem;
+  color: $white;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: $purple2;
+    background-image: $gradient1;
+  }
+}

@@ -1,0 +1,12 @@
+{
+    "testusers": [
+        {
+            "username": "ajgopal",
+            "password": "12345"
+        },
+        {
+            "username": "avigopal",
+            "password": "67890"
+        }
+    ]
+}
