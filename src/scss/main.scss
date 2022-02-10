@@ -1,0 +1,200 @@
+// Base
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+// Colors
+$white: #fff;
+$black: #323232;
+$purple: #a4508b;
+$purple2: #5f0a87;
+
+// Font Family
+$quicksand: "Quicksand", sans-serif;
+
+// Spacing
+$padding-sm: 2rem;
+$padding-md: 4rem;
+$padding-lg: 6rem;
+$margin-sm: 2rem;
+$margin-md: 4rem;
+$margin-lg: 6rem;
+
+// Mixins
+
+$breakpoints: (
+  "sm": 576px,
+  "md": 767px,
+  "lg": 992px,
+  "xl": 1200px,
+) !default;
+
+@mixin min-screen($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}
+
+@mixin txt-gradient() {
+  background-color: #50d8d7;
+  background-image: linear-gradient(316deg, #50d8d7 0%, #923993 74%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// Other
+.nav {
+  position: absolute;
+  top: $padding-md;
+  left: $padding-lg;
+  transition: transform 0.5s linear;
+  opacity: 0;
+  &.active {
+    opacity: 1;
+  }
+  ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  &-item {
+    padding: 0 1rem;
+  }
+  &-link {
+    font-size: 1.5rem;
+    color: $white;
+    text-decoration: none;
+    &:hover {
+      @include txt-gradient();
+    }
+  }
+  &-toggle {
+    background: transparent;
+    border: none;
+    position: relative;
+    height: 2rem;
+    padding: 0;
+    left: $padding-sm;
+    &-wrapper {
+      position: fixed;
+      top: $padding-md;
+    }
+    span {
+      display: block;
+      width: 2.5rem;
+      height: 0.2rem;
+      background: linear-gradient(326deg, $purple 0%, $purple2 74%);
+      position: absolute;
+      transition: transform 0.3s linear;
+
+      &:first-child {
+        top: 0;
+      }
+      &:nth-child(2) {
+        top: 0.9rem;
+      }
+      &:last-child {
+        bottom: 0;
+      }
+    }
+    &-wrapper.active {
+      & + .nav {
+        opacity: 1;
+      }
+      span {
+        width: 3rem;
+      }
+      span:nth-child(2) {
+        display: none;
+      }
+      span:first-child {
+        transform: rotate(135deg);
+        top: 0.8rem;
+      }
+      span:last-child {
+        transform: rotate(-135deg);
+        bottom: 1rem;
+      }
+    }
+  }
+}
+@include min-screen(sm) {
+  .nav {
+    position: fixed;
+    transform: translate(0, -10rem);
+    top: $padding-lg;
+    opacity: 1;
+    left: $padding-md;
+    &.show {
+      transform: translate(0, 0);
+    }
+    &-item {
+      padding: 0 $padding-sm;
+    }
+    &-link {
+      font-size: 2rem;
+    }
+    &-toggle {
+      display: none;
+    }
+  }
+}
+
+.main-content {
+  padding-top: 100px;
+  height: calc(100vh - (#{$padding-md} * 2));
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: $padding-sm;
+  font-family: $quicksand;
+  font-weight: normal;
+  color: $white;
+  background-color: $black;
+  @include min-screen(sm) {
+    padding: $padding-lg;
+  }
+  @include min-screen(xl) {
+    height: calc(100vh - (#{$padding-lg} * 2));
+  }
+}
+
+.intro-block {
+  h2 {
+    font-size: 2rem;
+    margin: 0;
+    @include min-screen(md) {
+      font-size: 4rem;
+    }
+  }
+  h1 {
+    font-size: 4rem;
+    margin: $margin-sm 0;
+    @include min-screen(md) {
+      font-size: 6rem;
+    }
+    span {
+      background-color: $purple;
+      @include txt-gradient();
+    }
+  }
+}

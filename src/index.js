@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import './scss/main.css';
+import Portfolio from './js/portfolio';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Portfolio />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('portfolio')
 );
 
 // If you want to start measuring performance in your app, pass a function
