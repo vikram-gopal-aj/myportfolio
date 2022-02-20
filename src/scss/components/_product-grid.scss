@@ -1,0 +1,74 @@
+.product {
+  &-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 1fr);
+    grid-gap: 1.5rem;
+    padding-bottom: $padding-lg;
+    @include min-screen(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include min-screen(lg) {
+      grid-gap: 3rem;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    &-msg {
+      grid-column: 1/-1;
+      margin: 0;
+      background-color: $white;
+      box-shadow: $white-box-shadow;
+      border-radius: 1rem;
+      font-size: 1.6rem;
+      color: $green;
+      font-weight: 600;
+      text-align: center;
+      padding: 1rem;
+      display: none;
+      &.show {
+        display: block;
+      }
+    }
+  }
+
+  &-card {
+    background-color: $white;
+    box-shadow: $white-box-shadow;
+    border-radius: 2rem;
+    padding: $padding-sm;
+    padding-bottom: $padding-lg;
+    position: relative;
+    color: $black;
+    span {
+      font-size: 1.6rem;
+    }
+  }
+
+  &-img {
+    display: block;
+    max-width: 100%;
+    min-height: 30rem;
+    max-height: 30rem;
+    object-fit: contain;
+    margin: 0 auto 1.5rem;
+    height: auto;
+    width: auto;
+  }
+
+  &-category {
+    float: right;
+    background-color: $black;
+    color: $white;
+    padding: 0.5rem 0.7rem;
+    border-radius: 1rem;
+  }
+
+  &-name {
+    font-size: 2rem;
+  }
+
+  &-action {
+    position: absolute;
+    bottom: $padding-sm;
+  }
+}

@@ -28,9 +28,10 @@ input {
 button,
 .btn {
   background-color: $purple;
-  background-image: $gradient;
+  background-image: $gradient1;
   border: none;
-  padding: 1rem 5rem;
+  border-radius: 2rem;
+  padding: 1.5rem 5rem;
   color: $white;
   font-weight: 600;
   cursor: pointer;
@@ -39,6 +40,6 @@ button,
   &:active,
   &:focus {
     background-color: $purple2;
-    background-image: $gradient1;
+    background-image: $gradient;
   }
 }

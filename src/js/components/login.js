@@ -38,7 +38,7 @@ function Login() {
 
     var isLoggedIn = false;
 
-    loginMsg.className= 'validation-msg';
+    loginMsg.className = "validation-msg";
 
     if (!username && !password) {
       loginMsg.classList.add("error");
@@ -79,8 +79,7 @@ function Login() {
     <div className="login-box">
       <h4>Login</h4>
       <form id="loginForm" onSubmit={handleLogin}>
-        <span id="loginMsg" className="validation-msg">
-        </span>
+        <span id="loginMsg" className="validation-msg"></span>
         <Input type="text" name="Email" id="Email" placeHolder="Username" />
         <Input
           type="Password"

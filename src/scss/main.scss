@@ -7,6 +7,9 @@ $green: #009944;
 $red: #cf000f;
 $gradient: linear-gradient(315deg, #f977ce 0%, #c373f2 74%);
 $gradient1: linear-gradient(315deg, #9ab5e1 0%, #f39fdc 74%);
+$white-box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+  rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+  rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
 // Font Family
 $quicksand: "Quicksand", sans-serif;
@@ -43,6 +46,14 @@ $breakpoints: (
   -webkit-text-fill-color: transparent;
 }
 
+@mixin vertical-center() {
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
 // Base
 html {
   font-size: 62.5%;
@@ -54,7 +65,8 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: hidden;
+  overflow-x: hidden;
+  background-color: $black;
 }
 
 code {
@@ -83,7 +95,7 @@ code {
 }
 
 .nav {
-  position: absolute;
+  position: fixed;
   top: $padding-md;
   left: $padding-lg;
   transition: transform 0.5s linear;
@@ -161,16 +173,9 @@ code {
 }
 @include min-screen(sm) {
   .nav {
-    position: fixed;
-    transform: translate(0, -10rem);
-    top: $padding-lg;
     opacity: 1;
-    left: $padding-md;
-    &.show {
-      transform: translate(0, 0);
-    }
     &-item {
-      padding: 0 $padding-sm;
+      padding: 0 $padding-sm 0 0;
     }
     &-link {
       font-size: 2rem;
@@ -182,29 +187,19 @@ code {
 }
 
 .main-content {
-  height: calc(100vh - (#{$padding-md} * 2));
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: $padding-sm;
-  padding-top: 10rem;
+  padding: 10rem $padding-sm $padding-sm;
   font-family: $quicksand;
   font-weight: normal;
   color: $white;
-  background-color: $black;
-  @include min-screen(sm) {
-    padding: $padding-lg;
-    padding-top: 10rem;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  @include min-screen(xl) {
-    height: calc(100vh - (#{$padding-lg} * 2));
+  height: calc(100vh - 12rem);
+  @include min-screen(lg) {
+    padding: 10rem $padding-lg $padding-lg;
+    height: calc(100vh - 16rem);
   }
 }
 
 .intro-block {
+  @include vertical-center();
   h2 {
     font-size: 2rem;
     margin: 0;
@@ -226,4 +221,5 @@ code {
 }
 
 @import "./components/login";
+@import "./components/product-grid";
 @import "./global/formelements";
