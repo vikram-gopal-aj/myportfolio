@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
 import { useEffect } from "react";
 
 import Home from "./pages/home";
@@ -34,14 +34,14 @@ function Portfolio() {
         <ul>
           <li></li>
           <li className="nav-item">
-            <Link to="/" className="nav-link">
+            <NavLink to="/" className="nav-link">
               Home
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link to="/estore" className="nav-link">
+            <NavLink to="/estore" className="nav-link">
               Simple E-Store
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </nav>

@@ -41,7 +41,7 @@ $breakpoints: (
 
 @mixin txt-gradient() {
   background-color: $purple;
-  background-image: $gradient;
+  background-image: $gradient1;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -67,6 +67,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   background-color: $black;
+
+  & > * {
+    box-sizing: border-box;
+  }
 }
 
 code {
@@ -115,9 +119,10 @@ code {
   }
   &-link {
     font-size: 1.5rem;
+    font-weight: 600;
     color: $white;
     text-decoration: none;
-    &:hover {
+    &:hover,&.active {
       @include txt-gradient();
     }
   }
@@ -221,5 +226,6 @@ code {
 }
 
 @import "./components/login";
+@import "./components/search";
 @import "./components/product-grid";
 @import "./global/formelements";

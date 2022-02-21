@@ -39,8 +39,6 @@ function MainNav() {
       <div className="nav-toggle-wrapper" id="nav-toggle"><button className="nav-toggle"><span></span><span></span><span></span></button></div>
       <nav className="nav" id="nav">
         <ul>
-          <li>
-          </li>
           <li className="nav-item">
             <Link to="/" className="nav-link">
               Home

@@ -1,0 +1,39 @@
+.search {
+  &-bar {
+    display: flex;
+    margin: auto;
+    max-width: 60rem;
+    padding: $padding-sm 0;
+    @include min-screen(md) {
+      width: 100%;
+    }
+
+    select {
+      border-bottom-left-radius: 2rem;
+      border-top-left-radius: 2rem;
+      display: none;
+      @include min-screen(sm) {
+        display: block;
+      }
+    }
+
+    input {
+      border: 0.2rem solid $black;
+      margin: -0.1rem;
+      padding: 0.8rem 2.5rem;
+      width: 100%;
+    }
+
+    button {
+      border-radius: 0 2rem 2rem 0;
+      border: 0.1rem solid $black;
+      padding: 1.5rem 3rem;
+      svg {
+        fill: $white;
+        height: 2rem;
+        stroke: $white;
+        width: 2rem;
+      }
+    }
+  }
+}
