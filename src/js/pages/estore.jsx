@@ -3,15 +3,16 @@ import React, { useEffect, useRef, useState } from "react";
 function SearchBar(props) {
   const searchInput = useRef(null);
   const categories = [];
+  let prevCategory = null;
 
-  Object.keys(props.products).map(function (key) {
-    let product = props.products[key];
-    if (categories.indexOf)
-      categories.push(
-        <option key={key} value={product.category}>
-          {product.category}
-        </option>
-      );
+  Array.from(props.products).forEach(function (product) {
+    if (product.category === prevCategory) return;
+    categories.push(
+      <option key={product.category} value={product.category}>
+        {product.category}
+      </option>
+    );
+    prevCategory = product.category;
   });
 
   return (
@@ -22,6 +23,7 @@ function SearchBar(props) {
           props.handleCategorySelect(e.target.value);
         }}
       >
+        <option value="all">All</option>
         {categories}
       </select>
       <input
@@ -91,7 +93,8 @@ function ProductGrid(props) {
   Object.keys(props.products).map(function (key) {
     let product = props.products[key];
     if (product.title.toLowerCase().indexOf(query) === -1) return;
-    if (product.category.toLowerCase().indexOf(cat) === -1) return;
+    if (product.category.toLowerCase().indexOf(cat) === -1 && cat !== "all")
+      return;
     filteredProducts.push(
       <ProductCard
         key={key}
@@ -108,7 +111,6 @@ function EStore() {
   const [products, fetchProducts] = useState({});
   const [searchTerm, setSearch] = useState("");
   const [category, setCategory] = useState("");
-  const categories = [];
   const notification = document.getElementsByClassName("product-grid-msg")[0];
 
   const addToCart = (productId) => {
